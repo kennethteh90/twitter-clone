@@ -1,0 +1,9 @@
+    <%= post.content %>
+
+    <div class="container">
+      <% post.tags.each do |tag| %>
+      <div class="card">
+        <%= tag.tag %>
+      </div>
+      <% end %>
+    </div>
