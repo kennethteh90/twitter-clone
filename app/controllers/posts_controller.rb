@@ -4,19 +4,17 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
-    # @tags = @post.tags.all
-    # @tag = @post.tags.new
+    @posts = current_user.posts.all
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:posted] = "Thanks for posting!"
       redirect_to posts_path
     else
       @post = Post.new
-      @posts = Post.all
+      @posts = current_user.posts.all
       render :index
     end
   end
