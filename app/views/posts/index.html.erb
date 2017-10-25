@@ -20,6 +20,8 @@
       <%= render partial: "tags/new", locals: {post: post} %>
       <% post.tags.all.each do |tag| %>
         #<%= tag.name %>
+        <%= link_to 'Show posts with hashtag', post_tag_path(post, tag) %>
+        <%= link_to 'Delete hashtag', post_tag_path(post, tag), method: :delete %>
       <% end %>
       <%= link_to 'Delete Tweet', post_path(post), method: :delete %>
     </div>

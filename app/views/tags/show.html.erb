@@ -1,0 +1,14 @@
+<br><br>
+
+<div class="container">
+  <h1><small>Posts with</small> #<%= @tag.name %> </h1>
+  <% @posts.each do |post| %>
+  <div class="card container mx-auto p-4 my-3 my-card">
+    <p>
+      <%= post.content %>
+    </p>
+    <small>Tweeted at: <%= post.created_at %></small>
+    <%= link_to 'Delete Tweet', post_path(post), method: :delete %>
+  </div>
+  <% end %>
+</div>
