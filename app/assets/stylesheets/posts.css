@@ -2,18 +2,18 @@ body {
   padding-top: 50px;
 }
 
-.my_header {
+.my-header {
   background-color: #502840;
   /*margin-top: 50px;*/
   color: white;
   border-radius: 0;
 }
 
-.my_card {
+.my-card {
   background-color: #344B5A;
   color: white;
 }
 
-.bottom_shadow {
+.bottom-shadow {
   box-shadow: 0 0 3px 2px grey;
 }
