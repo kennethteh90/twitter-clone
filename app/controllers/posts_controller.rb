@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @posts = current_user.posts.all.order("created_at DESC")
+    @tag = @post.tags.new
   end
 
   def create

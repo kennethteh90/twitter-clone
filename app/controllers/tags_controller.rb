@@ -2,12 +2,16 @@ class TagsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def index
+    @tags = Tag.all
+  end
+
   def new
     Tag.new
   end
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.find(tag_params[:post_id])
     @tag = Tag.find_or_initialize_by(name: tag_params[:name])
     if @post.tags.exists?({name: @tag.name})
       flash[:tag_exists] = 'Hashtag exists!'
@@ -37,7 +41,7 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name, :post_id)
   end
 
 end

@@ -5,6 +5,9 @@
   <% @posts.each do |post| %>
   <div class="card container mx-auto p-4 my-3 my-card">
     <p>
+      <b>@<%= post.user.username %></b>
+    </p>
+    <p>
       <%= post.content %>
     </p>
     <small>Tweeted at: <%= post.created_at %></small>

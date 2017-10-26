@@ -17,11 +17,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <%= content_tag :body, class: "#{controller_name}" do %>
     <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <div class="my-0 alert alert-light alert-<%= key %>"><%= value %></div>
       <% end %>
     <%= render 'shared/navbar' if current_user %>
     <%= yield %>
-  </body>
+  <% end %>
 </html>
