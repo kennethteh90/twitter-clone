@@ -17,7 +17,7 @@
       </p>
       <small>Tweeted at: <%= post.created_at %></small>
 
-      <%= render partial: "tags/new", locals: {post: post.id} %>
+      <%= render partial: "tags/new", locals: { post: post.id } %>
       <% post.tags.all.each do |tag| %>
         #<%= tag.name %>
         <%= link_to 'Show posts with hashtag', tag_path(tag) %>
