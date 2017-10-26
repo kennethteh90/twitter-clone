@@ -1,6 +1,9 @@
 <div class="jumbotron my-header">
   <h1><small>Posts by</small> @<%=@user.username%></h1>
+  <%= render partial: "relationships/follow", locals: { user: @user } unless current_user.following?(@user) %>
+  <%= render partial: 'relationships/unfollow', locals: { user: @user } if current_user.following?(@user) %>
 </div>
+
 
   <div class="container">
     <% @posts.each do |post| %>
