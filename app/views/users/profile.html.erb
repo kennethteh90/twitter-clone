@@ -1,0 +1,25 @@
+<div class="jumbotron my-header">
+  <h1>Your Profile!</h1>
+</div>
+
+  <div class="container">
+    <% @posts.each do |post| %>
+    <div class="card container mx-auto p-4 my-3 my-card bottom-shadow">
+      <p>
+        <%= post.content %>
+      </p>
+      <small>Tweeted at: <%= post.created_at %></small>
+
+      <%= render partial: "tags/new", locals: { post: post.id } %>
+      <% post.tags.all.each do |tag| %>
+        #<%= tag.name %>
+        <%= link_to 'Show posts with hashtag', tag_path(tag) %>
+        <%= link_to 'Delete hashtag', tag_path(tag), method: :delete %>
+      <% end %>
+      <%= link_to 'Delete Tweet', post_path(post), method: :delete %>
+    </div>
+    <% end %>
+  </div>
+
+
+</div>

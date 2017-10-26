@@ -18,3 +18,7 @@ a:hover {
 .bottom-shadow {
   box-shadow: 3px 2px 4px 0px black;
 }
+
+.user-post {
+  background-color: #502840;
+}
