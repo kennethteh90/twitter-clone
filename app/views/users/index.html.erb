@@ -1,0 +1,21 @@
+<div class="jumbotron my-header">
+  <h1>Users</h1>
+</div>
+
+  <div class="container">
+    <% @users.each do |user| %>
+      <%= link_to users_all_path(user) do %>
+        <div class="card container mx-auto p-4 my-3 my-card bottom-shadow">
+          <p>
+            <b>@<%= user.username %></b>
+          </p>
+          <p>Last Tweet:
+            <%= "#{user.posts.last ? user.posts.last.content : 'No posts yet!' }" %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+</div>

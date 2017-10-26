@@ -1,7 +1,6 @@
 <p>Hashtags</p>
-<%= simple_form_for [post, post.tags.new] do |f| %>
-
+<%= simple_form_for @tag do |f| %>
   <%= f.input :name, label: false %>
+  <%= f.hidden_field :post_id, value: post %>
   <%= f.button :submit %>
-
 <% end %>
