@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       @post = Post.new
-      @posts = current_user.posts.all.order("created_at DESC")
+      @feed_items = current_user.feed.order("created_at DESC")
       render :index
     end
   end
@@ -27,13 +27,13 @@ class PostsController < ApplicationController
   def destroy
     Post.destroy(params[:id])
     flash[:deleted] = 'Post deleted!'
-    redirect_to posts_path
+    redirect_to profile_users_all_index_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, tags_attributes: [:name])
   end
 
 end
