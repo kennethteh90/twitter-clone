@@ -9,14 +9,13 @@
         <%= post.content %>
       </p>
       <small>Tweeted at: <%= post.created_at %></small>
-
+      <hr>
       <%= render partial: "tags/new", locals: { post: post.id } %>
       <% post.tags.all.each do |tag| %>
-        #<%= tag.name %>
-        <%= link_to 'Show posts with hashtag', tag_path(tag) %>
+        <%= link_to "##{ tag.name }", tag_path(tag) %>
         <%= link_to 'Delete hashtag', tag_path(tag), method: :delete %>
       <% end %>
-      <%= link_to 'Delete Tweet', post_path(post), method: :delete %>
+      <%= link_to 'Delete Tweet', post_path(post), method: :delete, class: 'btn btn-danger my-button' %>
     </div>
     <% end %>
   </div>

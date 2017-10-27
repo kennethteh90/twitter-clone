@@ -12,7 +12,7 @@
             <%= "#{user.posts.last ? user.posts.last.content : 'No posts yet!' }" %>
           </p>
           <p>
-            <%= link_to 'View Tweets', users_all_path(user), class: "btn btn-secondary" %>
+            <%= link_to 'View Tweets', users_all_path(user), class: "btn btn-warning my-button" %>
           </p>
           <%= render partial: "relationships/follow", locals: { user: user } unless current_user.following?(user) %>
           <%= render partial: 'relationships/unfollow', locals: { user: user } if current_user.following?(user) %>

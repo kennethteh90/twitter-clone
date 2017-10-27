@@ -22,3 +22,12 @@ a:hover {
 .user-post {
   background-color: #502840;
 }
+
+.my-button {
+  width: 150px;
+  margin: 3px;
+}
+
+hr {
+  border-color: white;
+}

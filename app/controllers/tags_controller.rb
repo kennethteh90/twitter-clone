@@ -27,10 +27,11 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @post.tags.destroy(params[:id])
+    # @post = Post.find(params[:post_id])
+    # @post.tags.destroy(params[:id])
+    Tag.destroy(params[:id])
     flash[:tag_deleted] = 'Hashtag deleted!'
-    redirect_to posts_path
+    redirect_to profile_users_all_index_path
   end
 
   def show

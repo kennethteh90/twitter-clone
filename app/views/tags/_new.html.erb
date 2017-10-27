@@ -2,5 +2,5 @@
 <%= simple_form_for @tag do |f| %>
   <%= f.input :name, label: false %>
   <%= f.hidden_field :post_id, value: post %>
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Hashtag!', class: "btn btn-secondary my-button" %>
 <% end %>

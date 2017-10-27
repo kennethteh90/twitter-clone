@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     get 'followers/:id', to: 'devise/users#following', as: 'followers'
 
     # get 'users/all', to: 'users#index'
-  resources :users_all, controller: 'users', only: [:index, :show]
-
-    get 'profile', to: 'users#profile', as: 'profile'
+  resources :users_all, controller: 'users', only: [:index, :show] do
+    get 'profile', on: :collection
+  end
 
   resources :posts
 

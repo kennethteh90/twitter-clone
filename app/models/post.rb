@@ -7,4 +7,6 @@ class Post < ApplicationRecord
 
   validates :content, presence: true, length: { maximum: 140 }
 
+  accepts_nested_attributes_for :tags, allow_destroy: true
+
 end
