@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   def show; end
 
   def destroy
-    Post.destroy(params[:id])
+    @post = Post.find(params[:id])
+    @post.destroy
     flash[:deleted] = 'Post deleted!'
     redirect_to profile_users_all_index_path
   end

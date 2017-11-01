@@ -6,10 +6,6 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
-  def new
-    Tag.new
-  end
-
   def create
     @post = Post.find(tag_params[:post_id])
     @tag = Tag.find_or_initialize_by(name: tag_params[:name])
