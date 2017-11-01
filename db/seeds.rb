@@ -8,9 +8,9 @@
 
 x = 0
 while x < 5
-  @user = User.new(username: 'User' + x.to_s , email: Faker::Internet.unique.email, password: '123123')
+  @user = User.new(username: 'user' + x.to_s , email: Faker::Internet.unique.email, password: '123123')
   @user.save
-  @post = @user.posts.new(content: Faker::StarWars.quote << ' #' << Faker::Cat.name)
+  @post = @user.posts.new(content: Faker::StarWars.quote << ' #' << Faker::Cat.name.downcase)
   @post.save
   # Scan for hashtags
   @tag_array = @post.content.scan(/#\w+\b/)

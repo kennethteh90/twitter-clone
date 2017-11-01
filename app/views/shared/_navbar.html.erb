@@ -6,16 +6,16 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to 'Home', posts_path, class: "nav-link" %>
+        <%= link_to 'Home', posts_path, class: "nav-link #{is_active?('posts','index')}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Profile', profile_users_all_index_path, class: "nav-link" %>
+        <%= link_to 'Profile', profile_users_all_index_path, class: "nav-link #{is_active?('users','profile')}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Hashtags', tags_path, class: "nav-link" %>
+        <%= link_to 'Hashtags', tags_path, class: "nav-link #{is_active?('tags', 'index')}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Users', users_all_index_path, class: "nav-link" %>
+        <%= link_to 'Users', users_all_index_path, class: "nav-link  #{is_active?('users', 'index')}" %>
       </li>
       <li class="nav-item">
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
