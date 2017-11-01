@@ -1,9 +1,6 @@
 <%= simple_form_for @post do |f| %>
 
   <%= f.input :content, as: :text, label: false, placeholder: "What's happening?" %>
-      <%= f.simple_fields_for :tags, tag do |t| %>
-        <%= t.input :name, placeholder: '#awesome', label: false %>
-      <% end %>
   <%= f.button :submit, 'Tweet!', class: "btn btn-primary my-button" %>
 
 <% end %>
