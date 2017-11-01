@@ -15,7 +15,7 @@
       <small>Tweeted at: <%= post.created_at %></small>
 
       <% post.tags.all.each do |tag| %>
-        <%= link_to "##{ tag.name }", tag_path(tag) %>
+        <%= link_to "#{ tag.name }", tag_path(tag) %>
       <% end %>
 
     </div>

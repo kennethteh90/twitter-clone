@@ -12,7 +12,7 @@
       <hr>
       <%= render partial: "tags/new", locals: { post: post.id } %>
       <% post.tags.all.each do |tag| %>
-        <%= link_to "##{ tag.name }", tag_path(tag) %>
+        <%= link_to "#{ tag.name }", tag_path(tag) %>
         <%= link_to 'Delete hashtag', tag_path(tag), method: :delete %>
       <% end %>
       <%= link_to 'Delete Tweet', post_path(post), method: :delete, class: 'btn btn-danger my-button' %>
