@@ -2,9 +2,14 @@ class RelationshipsController < ApplicationController
 
   def create
     user = User.find(params[:followed_id])
-    current_user.follow(user)
-    flash[:success] = "You are now following @#{user.username}"
-    redirect_to users_all_index_path
+    if user == current_user
+      flash[:failure] = "You are trying to follow yourself!"
+      redirect_to users_all_index_path
+    else
+      current_user.follow(user)
+      flash[:success] = "You are now following @#{user.username}"
+      redirect_to users_all_index_path
+    end
   end
 
   def destroy
