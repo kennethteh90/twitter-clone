@@ -60,3 +60,7 @@ gem 'faker'
 gem 'simple_form'
 
 gem 'devise'
+
+gem 'filestack-rails'
+
+gem "paperclip", "~> 5.0.0"
