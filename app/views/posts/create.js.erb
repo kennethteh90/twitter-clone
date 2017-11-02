@@ -1,0 +1,9 @@
+$("#posts-table").html("<%= j render(partial: 'posts-table') %>");
+$(".tweet-form").html("<%= j render(partial: 'new') %>");
+
+if('<%= flash.any? %>') {
+  $(".my-flash").html("<p class='ml-3'> <%= flash[:notice] %> </p>");
+  $(".my-flash").css("display", "block");
+} else {
+  $(".my-flash").css("display", "none");
+}

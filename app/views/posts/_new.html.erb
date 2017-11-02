@@ -1,4 +1,4 @@
-<%= simple_form_for @post do |f| %>
+<%= simple_form_for @post, remote: true do |f| %>
 
   <%= f.input :content, as: :text, label: false, placeholder: "What's happening?" %>
   <%= f.button :submit, 'Tweet!', class: "btn btn-primary my-button" %>

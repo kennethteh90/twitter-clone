@@ -11,30 +11,27 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      flash[:posted] = 'Thanks for posting!'
-      redirect_to posts_path
+      flash.discard
+      flash.now[:notice] = 'Thanks for posting!'
+      # Scan for hashtags
+      @tag_array = @post.content.scan(/#\w+\b/)
+      # Put loop here
+      unless @tag_array == []
+        @tag_array.each do |tag|
+          @tag = Tag.find_or_initialize_by(name: tag)
+          @tag.save
+          @post.tags << @tag
+          flash[:tag] = 'Hashtag added!'
+        end
+      end
+      @post = Post.new
+      @feed_items = current_user.feed.order("created_at DESC")
     else
       @post = Post.new
       @feed_items = current_user.feed.order("created_at DESC")
-      render :index
+      flash.now[:notice] = 'Empty tweet!'
     end
 
-    # Scan for hashtags
-    @tag_array = @post.content.scan(/#\w+\b/)
-    # Put loop here
-    unless @tag_array == []
-      @tag_array.each do |tag|
-        @tag = Tag.find_or_initialize_by(name: tag)
-        if @post.tags.exists?({name: @tag.name})
-          flash[:tag_exists] = 'Hashtag exists!'
-        elsif @tag.save
-          @post.tags << @tag
-          flash[:tag_created] = 'Hashtag added!'
-        else
-          flash[:tag_failed] = 'Hashtag did not work!'
-        end
-      end
-    end
 
   end
 
@@ -45,7 +42,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:deleted] = 'Post deleted!'
+    flash[:notice] = 'Post deleted!'
     redirect_to profile_users_all_index_path
   end
 

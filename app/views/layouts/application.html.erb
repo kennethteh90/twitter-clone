@@ -18,9 +18,15 @@
   </head>
 
   <%= content_tag :body, class: "#{controller_name}" do %>
+
     <% flash.each do |key, value| %>
-        <div class="my-0 alert alert-light alert-<%= key %>"><%= value %></div>
-      <% end %>
+      <%= content_tag :div, value, class: "alert alert-light alert-height" %>
+    <% end %>
+
+    <div class ="py-3 my-flash">
+
+    </div>
+
     <%= render 'shared/navbar' if current_user %>
     <%= yield %>
   <% end %>
