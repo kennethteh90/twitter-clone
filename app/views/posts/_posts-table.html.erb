@@ -1,0 +1,19 @@
+<div class="container">
+  <% @feed_items.each do |post| %>
+  <div class="card container mx-auto p-4 my-3 my-card bottom-shadow <%= 'user-post' if current_user == post.user %>">
+    <%= link_to users_all_path(post.user), style: "color:white;" do %>
+      <p>
+        <%= image_tag post.user.avatar.url(:thumb), class: "crop-small" if post.user.avatar.file? %><b>@<%= post.user.username %></b>
+      </p>
+    <% end %>
+    <p>
+      <%= post.content %>
+    </p>
+    <small>Tweeted at: <%= post.created_at %></small>
+
+    <% post.tags.all.each do |tag| %>
+      <%= link_to "#{ tag.name }", tag_path(tag) %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
