@@ -4,7 +4,7 @@
 
 <div class="container">
   <% @tags.each do |tag| %>
-    <%= link_to tag_path(tag) do %>
+    <%= link_to tag_path("#{tag.name[1,tag.name.length]}") do %>
       <div class="card container mx-auto p-4 my-3 my-card">
         <p>
           <b><%= tag.name %></b>
