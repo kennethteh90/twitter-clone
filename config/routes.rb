@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
     # get 'users/all', to: 'users#index'
   put 'users_all/remove', to: 'users#remove'
-  resources :users_all, controller: 'users', only: [:index, :show, :update, :destroy] do
+  resources :users_all, controller: 'users', only: [:index, :show, :update] do
     get 'profile', on: :collection
   end
 
