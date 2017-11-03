@@ -7,7 +7,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = Tag.find(params[:id])
+    @tag = Tag.find_by(name: '#' + params[:hashtagurl])
     @posts = @tag.posts.all.order("created_at DESC")
   end
 

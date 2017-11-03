@@ -14,9 +14,9 @@
           <%= "#{user.posts.last ? user.posts.last.content : 'No posts yet!' }" %>
         </p>
         <p>
-          <% user.posts.last.tags.all.each do |tag| %>
+          <!-- <% user.posts.last.tags.all.each do |tag| %>
             <%= link_to "#{ tag.name }", tag_path(tag) %>
-          <% end %>
+          <% end %> -->
         </p>
         <%= render partial: "relationships/follow", locals: { user: user } unless current_user.following?(user) %>
         <%= render partial: 'relationships/unfollow', locals: { user: user } if current_user.following?(user) %>

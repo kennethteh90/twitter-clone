@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  resources :tags
+  resources :tags, param: :hashtagurl
 
   resources :relationships, only: [:create, :destroy]
 
