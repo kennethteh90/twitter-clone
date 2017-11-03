@@ -24,7 +24,6 @@ class PostsController < ApplicationController
           @tag = Tag.find_or_initialize_by(name: tag)
           @tag.save
           @post.tags << @tag
-          flash[:tag] = 'Hashtag added!'
         end
       end
       @post = Post.new
@@ -42,7 +41,7 @@ class PostsController < ApplicationController
   def new; end
 
   def show
-    
+
   end
 
   def destroy
