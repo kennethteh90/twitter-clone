@@ -21,10 +21,13 @@
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0 mx-auto">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search Tweeter" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <!-- Search -->
+    <%= form_tag posts_path, method: :get, class: 'form-inline my-2 my-lg-0 mx-auto' do %>
+      <%= text_field_tag :term, params[:term], class: 'form-control mr-sm-2' %>
+      <%= submit_tag 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
+      <%= link_to 'Show all', posts_path, class: 'ml-3 btn btn-outline-info my-2 my-sm-0' %>
+    <% end %>
+
     <span class="navbar-text">
       Welcome, @<%= current_user.username %>!
     </span>

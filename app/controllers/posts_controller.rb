@@ -6,6 +6,9 @@ class PostsController < ApplicationController
     @post = Post.new
     @feed_items = current_user.feed.order("created_at DESC")
     # @tag = @post.tags.new
+
+    search
+
   end
 
   def create
@@ -26,6 +29,7 @@ class PostsController < ApplicationController
       end
       @post = Post.new
       @feed_items = current_user.feed.order("created_at DESC")
+      search
     else
       @post = Post.new
       @feed_items = current_user.feed.order("created_at DESC")
@@ -59,6 +63,17 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content, tags_attributes: [:name])
+  end
+
+  def search
+    # Search
+    params[:term].downcase! if params[:term]
+    @user_id = User.find_by(username: params[:term])
+    @results = if params[:term]
+      (Post.where("content LIKE '%#{params[:term]}%'") + Post.where(user_id: @user_id)).reverse
+    else
+      @feed_items
+    end
   end
 
 end

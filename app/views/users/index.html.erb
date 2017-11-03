@@ -4,23 +4,23 @@
 
   <div class="container">
     <% @users.each do |user| %>
-        <div class="card container mx-auto p-4 my-3 my-card bottom-shadow">
-          <%= link_to users_all_path(user), style: "color:white;" do %>
-            <p>
-              <%= image_tag user.avatar.url(:thumb), class: "crop-small" if user.avatar.file? %><b>@<%= user.username %></b>
-            </p>
-          <% end %>
-          <p>Last Tweet:
-            <%= "#{user.posts.last ? user.posts.last.content : 'No posts yet!' }" %>
-          </p>
+      <div class="card container mx-auto p-4 my-3 my-card bottom-shadow">
+        <%= link_to users_all_path(user), style: "color:white;" do %>
           <p>
-            <% user.posts.last.tags.all.each do |tag| %>
-              <%= link_to "#{ tag.name }", tag_path(tag) %>
-            <% end %>
+            <%= image_tag user.avatar.url(:thumb), class: "crop-small" if user.avatar.file? %><b>@<%= user.username %></b>
           </p>
-          <%= render partial: "relationships/follow", locals: { user: user } unless current_user.following?(user) %>
-          <%= render partial: 'relationships/unfollow', locals: { user: user } if current_user.following?(user) %>
-        </div>
+        <% end %>
+        <p>Last Tweet:
+          <%= "#{user.posts.last ? user.posts.last.content : 'No posts yet!' }" %>
+        </p>
+        <p>
+          <% user.posts.last.tags.all.each do |tag| %>
+            <%= link_to "#{ tag.name }", tag_path(tag) %>
+          <% end %>
+        </p>
+        <%= render partial: "relationships/follow", locals: { user: user } unless current_user.following?(user) %>
+        <%= render partial: 'relationships/unfollow', locals: { user: user } if current_user.following?(user) %>
+      </div>
 
     <% end %>
   </div>

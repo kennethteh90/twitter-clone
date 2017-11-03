@@ -1,5 +1,5 @@
 <div class="container">
-  <% @feed_items.each do |post| %>
+  <% @results.each do |post| %>
   <div class="card container mx-auto p-4 my-3 my-card bottom-shadow <%= 'user-post' if current_user == post.user %>">
     <%= link_to users_all_path(post.user), style: "color:white;" do %>
       <p>
