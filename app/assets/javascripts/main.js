@@ -4,7 +4,7 @@ function highlight() {
     "className": "highlight",
     "each": function(element){
       text = element.text.slice(1)
-      $(element).attr("href", `/tags/${text}`);
+      $(element).attr("href", "/tags/" + text);
     }
   });
 }
