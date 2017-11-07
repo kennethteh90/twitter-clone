@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.1'
   gem "factory_bot_rails", "~> 4.0"
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -64,3 +65,5 @@ gem 'devise'
 gem 'filestack-rails'
 
 gem "paperclip", "~> 5.0.0"
+
+gem 'omniauth-facebook'
